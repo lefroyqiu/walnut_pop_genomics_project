@@ -3,7 +3,6 @@ $prefix = shift or die "Prefix? (walnut_100K?)";
 open OUT, ">$prefix.RAiSD_combined_chrs_info";
 
 foreach $file (readdir DIR){
-	#print "$file\n";
 	if($file =~ /RAiSD_Report(.+)\.names\.(.+)/){
 	#	print "$2\n";
 	  open IN, $file or die;
@@ -21,8 +20,7 @@ foreach $file (readdir DIR){
       push @{$chrom},$region;
       
       $likelihood{$chrom."\t".$region} = $tmp[-1];
-     #$alpha{$chrom."\t".$region} = $tmp[2];
-      #print OUT "$chrom_info\t$region\t$likelihood\t$alpha\n";
+
     }	
 	}
 }

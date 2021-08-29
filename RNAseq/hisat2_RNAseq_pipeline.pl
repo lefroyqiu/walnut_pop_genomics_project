@@ -3,8 +3,8 @@
 #use strict;
 use POSIX;
 
-my $ref_genome = '/data/home/qiujie/Global_Walnut_Reseq_Project/Reference_genomes/Jregia.genome_v1.0.fa';
-my $GTF_GFF_file = '/data/home/qiujie/Global_Walnut_Reseq_Project/Reference_genomes/Jregia.genome_v1.2.gff3';
+my $ref_genome = '~/Global_Walnut_Reseq_Project/Reference_genomes/Jregia.genome_v1.0.fa';
+my $GTF_GFF_file = '~/Global_Walnut_Reseq_Project/Reference_genomes/Jregia.genome_v1.2.gff3';
 
 my ($fq1,$fq2,$sample_prefix);
 
@@ -47,9 +47,5 @@ sub remove_file {
   my ($sample_prefix,$prefixname) = @_;
   if(-f "$sample_prefix/$prefixname.bam"){
     system(qq(rm -f $sample_prefix/$prefixname.sam));	
-#    system(qq(rm -f $sample_prefix/$prefixname.bam));
-#    system(qq(rm -f $sample_prefix/$prefixname.sorted.bam.depth));
-#    system(qq(rm -f $sample_prefix/$prefixname.realn.bam));
-#    system(qq(rm -f $sample_prefix/$prefixname.rmdup.bam));
   }	
 }

@@ -37,14 +37,11 @@ foreach $chrom (sort keys%chroms){
        $after_start = $posi_base[$i+1];
        push @start_bps,$after_start;
        push @end_bps,$pre_end;
-      # push @z_scores,$zscore{$chrom."\t".$pre_end};
-      # push @value,$value{$chrom."\t".$pre_end};
+
      }
    }
    push @end_bps,$posi_base[-1];
-  # push @z_scores,$zscore{$chrom."\t".$posi_base[-1]};
-  # push @value,$value{$chrom."\t".$posi_base[-1]};
- #  print OUT "$chrom\t$bases_count\n";
+
    @uniq_start_bps = uniq(@start_bps);
    @uniq_end_bps = uniq(@end_bps);
     for $j (0..$#uniq_start_bps){
@@ -54,7 +51,6 @@ foreach $chrom (sort keys%chroms){
       $value = $value[$j];
       $final_start_bp = $start_bp + $win_size;
       $size = $end_bp - $final_start_bp;
-      #print OUT1 "$chrom\t$final_start_bp\t$end_bp\t$z_score\t$value\n";	
       print OUT1 "$chrom\t$final_start_bp\t$end_bp\t$size\n" if $final_start_bp > $win_size;	
     }
    

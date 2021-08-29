@@ -14,8 +14,7 @@ open OUT, ">$prefix.hapmap";
 while(<IN>){
   chomp;
   my @tmp = split/\t/;
- # if(scalar @tmp > 9){
- # my ($chr,$pos,$id,$refbase,$alterbase) = @tmp[0,1,2,3,4];
+
    if(/#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	(.+)/){
    	my $samples = $1;
    	
@@ -28,13 +27,10 @@ while(<IN>){
 	     my $rs = $newchrname.'_'.$pos;
 	     my $alleles = $refbase.'/'.$alterbase;
        if(
-   #    length($alterbase) == 1 
-   #    and
        $alterbase !~ /\,/ 
        and 
        $alterbase =~ /A|T|C|G/){
        	  $info =~ s/\.\/\./--:/g;
-   #    	  print "$info\n";
 	     my @infos = split/\t/,$info;
 	     my @targetinfos = map {/(.+?)\:/} @infos;
 	     my $targetinfos = join "\t",@targetinfos;

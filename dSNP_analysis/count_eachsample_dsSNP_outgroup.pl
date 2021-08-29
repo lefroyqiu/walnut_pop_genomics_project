@@ -21,7 +21,7 @@ while(<IN>){
            }
         }
      }
-     elsif($tmp[562] =~ /1\/1/){
+     elsif($tmp[562] =~ /1\/1/){ ## J. nigra sample geno
         for $i (9..$#tmp){
            if($tmp[$i] =~ '0/0'){
               $dSNP_homo{$num2tit{$i}}++;	

@@ -1,4 +1,4 @@
-$faststructure = '/data/home/qiujie/biosoftwares/fastStructure/rajanil-fastStructure-e47212f/structure.py';
+$faststructure = '~/biosoftwares/fastStructure/rajanil-fastStructure-e47212f/structure.py';
 
 if(@ARGV < 2){
   die "Usage: perl $0 <Kvalue> <input(XX.str)>";	

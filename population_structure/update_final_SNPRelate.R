@@ -1,5 +1,5 @@
-##修改snprelate_data输入数据所在位置
-setwd('/data/home/qiujie/Global_Walnut_Reseq_Project/Final_826samples_noUS/1_population_structure/2_based_on_4dtv_MAF0005_Miss20/SNPrelate')
+
+setwd('SNPrelate_data_dir')
 
 library(gdsfmt)
 library(SNPRelate)

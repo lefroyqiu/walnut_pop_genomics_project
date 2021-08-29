@@ -1,5 +1,5 @@
 opendir DIR, './';
-$exp_id = shift or die "XieWB_data?";
+$exp_id = shift or die "exp data?";
 $pvalue = shift or die "Pvalue?";
 
 open OUT, ">$exp_id.Combined_Sig_SNPinfo.$pvalue.sig";

@@ -6,7 +6,7 @@ my $java7dir = '/data/tool/jre1.8.0_144/bin/';
 my $gatk_software = "/data/tool/GATKv3.7/GenomeAnalysisTK.jar";
 my $samtools = '/data/tool/samtools-1.9/bin/samtools';
 
-my $ref_genome = '/data/home/qiujie/Global_Walnut_Reseq_Project/Reference_genomes/Jregia.genome_v1.0.fa';
+my $ref_genome = '~/Global_Walnut_Reseq_Project/Reference_genomes/Jregia.genome_v1.0.fa';
 my ($fq1,$fq2,$sample_prefix);
 if(@ARGV < 3){
   die "Usage: perl $0 <fq1> <fq2> <sample_prefix(sample1)>";	
@@ -37,10 +37,6 @@ my $sortedbam = $sample_prefix.'.sorted.bam';
 system(qq($samtools index $sample_prefix/$sortedbam));
 system(qq($samtools flagstat $sample_prefix/$sortedbam > $sample_prefix/$sample_prefix.flagstat));
 
-#my $statdepth = &statdepth($sample_prefix,$sortedbam);
-
-#open DEPTH, ">$sample_prefix/$sortedbam.depthstat";
-#print DEPTH "$statdepth\n";
 
 
 ##  quality control #######
@@ -55,13 +51,6 @@ system(qq($java7dir/java -Xmx20g -Djava.io.tmpdir=$gatk_tmpfile -jar $gatk_softw
 
 system(qq($java7dir/java -Xmx20g -Djava.io.tmpdir=$gatk_tmpfile -jar $gatk_software -R $ref_genome -T IndelRealigner -targetIntervals $sample_prefix/$sample_prefix.realn.intervals -I $sample_prefix/$sample_prefix.rmdup.bam -o $sample_prefix/$sample_prefix.realn.bam));
 
-##first GATK calling
-#system(qq($java7dir/java -Xmx20g -Djava.io.tmpdir=$gatk_tmpfile -jar $gatk_software -R $ref_genome -T UnifiedGenotyper -I $sample_prefix/$sample_prefix.realn.bam -o $sample_prefix/$sample_prefix.raw.vcf -nct 4 -nt 10 --genotype_likelihoods_model SNP -rf BadCigar -stand_call_conf 30));
-
-##recal
-#system(qq($java7dir/java -Xmx20g -Djava.io.tmpdir=$gatk_tmpfile -jar $gatk_software -T BaseRecalibrator -R $ref_genome -I $sample_prefix/$sample_prefix.realn.bam -o $sample_prefix/$sample_prefix.recal_data.grp -knownSites $sample_prefix/$sample_prefix.raw.vcf));
-
-#system(qq($java7dir/java -Xmx20g -Djava.io.tmpdir=$gatk_tmpfile -jar $gatk_software -T PrintReads -R $ref_genome -I $sample_prefix/$sample_prefix.realn.bam -o $sample_prefix/$sample_prefix.recal.bam -BQSR $sample_prefix/$sample_prefix.recal_data.grp ));
 
 &remove_file($sample_prefix,$sample_prefix);
 print OUT "$sample_prefix finished: ".localtime()."\n";
@@ -91,7 +80,6 @@ sub remove_file {
     system(qq(rm -f $sample_prefix/$prefixname.sam));	
     system(qq(rm -f $sample_prefix/$prefixname.bam));
     system(qq(rm -f $sample_prefix/$prefixname.sorted.bam.depth));
-   # system(qq(rm -f $sample_prefix/$prefixname.realn.bam));
     system(qq(rm -f $sample_prefix/$prefixname.rmdup.bam));
   }	
 }

@@ -1,8 +1,5 @@
 #!/usr/bin/perl
 
-#use strict;
-#use warnings;
-
 my $hapmapfile = shift or die "Hapmapfile?";
 
 open IN, $hapmapfile;
@@ -34,8 +31,6 @@ while(<IN>){
     }
   }else{
     for my $i (11..$#tmp){
-  #  	print "$i\n";
-   # 	print "$tmp[$i]\n";
       push @{$num2id{$i}},$tmp[$i];	
     }
   }
@@ -46,12 +41,10 @@ foreach my $id (@sortednames){
 	my $nums1 = '';
 	my $nums2 = '';
   foreach my $bases (@{$id}){
- # 	print "$bases\n";
      my $firstbase = substr($bases,0,1);
      my $secondbase = substr($bases,1,1);
      my $num1 = $base2num{$firstbase};
      my $num2 = $base2num{$secondbase};
-  #   print "$num1\t";
       $nums1 .= $num1."\t";
       $nums2 .= $num2."\t";
   }	
