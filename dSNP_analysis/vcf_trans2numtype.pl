@@ -11,7 +11,7 @@ while(<IN>){
        push @samples,$tmp[$i];
     }
   }else{
-  	if($tmp[562] =~ /0\/0/){
+  	if($tmp[562] =~ /0\/0/){ ## J. nigra sample geno
   	  $out_geno = "Ref";	
   	}
   	elsif($tmp[562] =~ /1\/1/){
