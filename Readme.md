@@ -1,1 +1,1 @@
-Custom scripts and pipelines used in the manuscript "Cracking the genetic code for walnut adaptation and agronomic traits: A genome variation map" by Ji et al. (2021) 
+Custom scripts and pipelines used in the manuscript "A genome variation map provides insights into the genetics of walnut adaptation and agronomic traits" by Ji et al. (2021) 
